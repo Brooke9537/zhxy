@@ -153,7 +153,7 @@
       <h2 class="detail-h2">一个网页，全部功能，迎接便捷校园生活!</h2>
 
       <div class="am-g">
-        <div class="am-u-lg-3 am-u-md-6 am-u-sm-12 detail-mb">
+        <div class="am-u-lg-4 am-u-md-6 am-u-sm-12 detail-mb">
 
           <h3 class="detail-h3">
             <i class="am-icon-mobile am-icon-sm"></i>
@@ -164,7 +164,7 @@
             整体使用 Amaze UI ，其业内先进的 mobile first 理念，从小屏逐步扩展到大屏，无论是用手机还是用电脑，都可以快速得到想要的功能。
           </p>
         </div>
-        <div class="am-u-lg-3 am-u-md-6 am-u-sm-12 detail-mb">
+        <div class="am-u-lg-4 am-u-md-6 am-u-sm-12 detail-mb">
           <h3 class="detail-h3">
             <i class="am-icon-cogs am-icon-sm"></i>
             功能丰富，多样化
@@ -174,7 +174,7 @@
             智慧校园并不满足于其主体———心理咨询预约，同时拥有数十个日常使用最频繁的功能如看课表、查空自习室、考试提醒、学习监督、自习抢座……涵盖校园生活、学习。
           </p>
         </div>
-        <div class="am-u-lg-3 am-u-md-6 am-u-sm-12 detail-mb">
+        <div class="am-u-lg-4 am-u-md-6 am-u-sm-12 detail-mb">
           <h3 class="detail-h3">
             <i class="am-icon-check-square-o am-icon-sm"></i>
             学校自定义小功能
@@ -184,16 +184,7 @@
             我们的智慧校园可以在任意校园使用，每套系统拥有独立服务器、独立数据库，充分利用学校空余资源，本校运营者可在此基础上自行开发并同意与我们共享开发成果，一起努力实现大学校园信息化。
           </p>
         </div>
-        <div class="am-u-lg-3 am-u-md-6 am-u-sm-12 detail-mb">
-          <h3 class="detail-h3">
-            <i class="am-icon-send-o am-icon-sm"></i>
-            轻量级，高性能
-          </h3>
 
-          <p class="detail-p">
-            Amaze UI非常注重性能，基于轻量的 Zepto.js 开发，并使用 CSS3 来做动画交互，平滑、高效，更适合移动设备，让你的 Web 应用可以高速载入。
-          </p>
-        </div>
       </div>
     </div>
   </div>
