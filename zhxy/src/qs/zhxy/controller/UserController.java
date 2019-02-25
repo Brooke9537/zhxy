@@ -1,33 +1,16 @@
 ﻿package qs.zhxy.controller;
-import java.io.File;
-
-
-
-
-import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang.math.RandomUtils;
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-
 import qs.zhxy.controller.UserController;
-import qs.zhxy.pojo.Role;
 import qs.zhxy.pojo.User;
 import qs.zhxy.service.role.RoleService;
 import qs.zhxy.service.user.UserService;
@@ -37,7 +20,6 @@ import qs.zhxy.tools.PageSupport;
 @Controller
 @RequestMapping("/user")
 public class UserController{
-	private Logger logger = Logger.getLogger(UserController.class);
 	
 	@Resource
 	private UserService userService;
@@ -46,13 +28,11 @@ public class UserController{
 	
 	@RequestMapping(value="/login.html")
 	public String login(){
-		logger.debug("UserController welcome SMBMS==================");
 		return "login";
 	}
 	
 	@RequestMapping(value="/dologin.html",method=RequestMethod.POST)
 	public String doLogin(@RequestParam String userId,@RequestParam String userPassword,HttpServletRequest request,HttpSession session){
-		logger.debug("doLogin====================================");
 		//调用service方法，进行用户匹配
 		User user = userService.login(userId,userPassword);
 		if(null != user){//登录成功
@@ -83,7 +63,6 @@ public class UserController{
 	}
 	@RequestMapping(value="/exlogin.html",method=RequestMethod.GET)
 	public String exLogin(@RequestParam String userId,@RequestParam String userPassword){
-		logger.debug("exLogin====================================");
 		//调用service方法，进行用户匹配
 		User user = userService.login(userId,userPassword);
 		if(null == user){//登录失败
@@ -98,14 +77,12 @@ public class UserController{
 		return "error";
 	}*/
 	
+	@SuppressWarnings("unused")
 	@RequestMapping(value="/userlist.html")
 	public String getUserList(Model model,
 							@RequestParam(value="queryname",required=false) String queryUserName,
 							//@RequestParam(value="queryUserRole",required=false) String queryRoleId,
 							@RequestParam(value="pageIndex",required=false) String pageIndex){
-		logger.info("getUserList ---- > queryUserName: " + queryUserName);
-		//logger.info("getUserList ---- > queryroleId: " + queryRoleId);
-		logger.info("getUserList ---- > pageIndex: " + pageIndex);
 		int _queryRoleId = 0;		
 		List<User> userList = null;
 		//设置页面容量
@@ -191,7 +168,6 @@ public class UserController{
 	
 	@RequestMapping(value="/usermodify1.html",method=RequestMethod.GET)
 	public String getUserById(@RequestParam String userId,Model model){
-		logger.debug("getUserById uid===================== "+userId);
 		User user = userService.getUserByUserId(userId);
 		model.addAttribute(user);
 		return "usermodify1";
@@ -199,7 +175,6 @@ public class UserController{
 	
 	@RequestMapping(value="/view/{id} ",method=RequestMethod.GET)
 	public String view(@PathVariable String userId,Model model){
-		logger.debug("view id===================== "+userId);
 		User user = userService.getUserByUserId(userId);
 		model.addAttribute(user);
 		return "userview";
