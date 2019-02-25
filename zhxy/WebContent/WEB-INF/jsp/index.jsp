@@ -246,7 +246,7 @@
 
 <!--[if (gte IE 9)|!(IE)]><!-->
   
-<script src="${pageContext.request.contextPath}/statics/js/jquery.min.js"></script>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 <!--<![endif]-->
 <script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js"></script>
 <script>
