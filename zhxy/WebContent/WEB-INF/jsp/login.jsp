@@ -10,7 +10,7 @@
   <meta name="format-detection" content="telephone=no">
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <link rel="stylesheet" href="${pageContext.request.contextPath }/statics/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css"/>
   <style>
     .header {
       text-align: center;
