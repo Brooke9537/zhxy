@@ -11,10 +11,11 @@
   <script src="assets/js/amazeui.ie8polyfill.min.js"></script>
   <![endif]-->
   <!--[if (gte IE 9)|!(IE)]><!-->
+  
+
   <script src="${pageContext.request.contextPath}/statics/js/jquery.min.js"></script>
   <!--<![endif]-->
-  <script src="${pageContext.request.contextPath}/statics/js/amazeui.min.js"></script>
-  <script src="${pageContext.request.contextPath}/statics/js/app.js"></script>
+  <script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js"></script>
 
   <title>教师首页</title>
 
@@ -27,7 +28,7 @@
   <meta name="apple-mobile-web-app-title" content="Amaze UI" />
 
   <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/statics/images/logo.png">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/statics/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css"/>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/statics/css/admin.css">
 </head>
 <body>

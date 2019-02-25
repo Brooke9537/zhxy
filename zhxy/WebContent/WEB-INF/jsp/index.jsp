@@ -11,8 +11,10 @@
   <meta name="format-detection" content="telephone=no">
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
   <link rel="alternate icon" type="image/png" href="${pageContext.request.contextPath}/statics/images/logo.png">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/statics/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.css"/>
+  <link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css"/>
   <style>
     .get {
       background: #1E5B94;
@@ -237,13 +239,16 @@
 <!--[if lt IE 9]>
 <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.ie8polyfill.min.js"></script>
 <![endif]-->
 
+
+
 <!--[if (gte IE 9)|!(IE)]><!-->
+  
 <script src="${pageContext.request.contextPath}/statics/js/jquery.min.js"></script>
 <!--<![endif]-->
-<script src="${pageContext.request.contextPath}/statics/js/amazeui.min.js"></script>
+<script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js"></script>
 <script>
   $(function(){
     $('a').click(function(){
