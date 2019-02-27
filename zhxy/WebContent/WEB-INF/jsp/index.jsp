@@ -257,7 +257,7 @@
     });
   });
     function openpage(){
-  window.location.href="./"
+  window.location.href="./login"
   }
   </script>
 </body>

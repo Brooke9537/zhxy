@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="/WEB-INF/jsp/common/head_t.jsp"%>
+<%@include file="/WEB-INF/jsp/common/head_s.jsp"%>
  <div class="right">
         <div class="location">
             <strong>你现在所在的位置是:</strong>

@@ -19,7 +19,7 @@ public interface UserService {
 	 * @param userPassword
 	 * @return
 	 */
-	public User login(String userId,String userPassword);
+	public int login(String userId,String userPassword);
 	
 	/**
 	 * 根据条件查询用户列表

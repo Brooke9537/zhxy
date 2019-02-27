@@ -57,13 +57,15 @@ public class UserServiceImpl implements UserService{
 		return flag;
 	}
 	@Override
-	public User login(String userId, String userPassword) {
+	public int login(String userId, String userPassword) {
 		// TODO Auto-generated method stub
 		Connection connection = null;
-		User user = null;
+		int user = 1;
+		User loginuser = null;
 		try {
 			connection = BaseDao.getConnection();
-			user = userDao.getLoginUser(connection, userId);
+			
+			loginuser = userDao.getLoginUser(connection, userId);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -72,11 +74,16 @@ public class UserServiceImpl implements UserService{
 		}
 		
 		//匹配密码
-		if(null != user){
-			if(!user.getUserPassword().equals(userPassword))
-				user = null;
+		if(0 != user&&null != loginuser){
+			if(!loginuser.getUserPassword().equals(userPassword))
+				user = 0;
+			if(loginuser.getRoleId()==1)
+				user = 1;
+			if(loginuser.getRoleId()==2)
+				user = 2;
+			if(loginuser.getRoleId()==3)
+				user = 3;
 		}
-		
 		return user;
 	}
 	@Override

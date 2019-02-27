@@ -1,16 +1,33 @@
 ﻿package qs.zhxy.controller;
+import java.io.File;
+
+
+
+
+import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang.math.RandomUtils;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
 import qs.zhxy.controller.UserController;
+import qs.zhxy.pojo.Role;
 import qs.zhxy.pojo.User;
 import qs.zhxy.service.role.RoleService;
 import qs.zhxy.service.user.UserService;
@@ -34,25 +51,35 @@ public class UserController{
 	@RequestMapping(value="/dologin.html",method=RequestMethod.POST)
 	public String doLogin(@RequestParam String userId,@RequestParam String userPassword,HttpServletRequest request,HttpSession session){
 		//调用service方法，进行用户匹配
-		User user = userService.login(userId,userPassword);
-		if(null != user){//登录成功
+		int user = userService.login(userId,userPassword);
+		User loginuser = new User(userId,userPassword,user);
+		if(0 != user){//登录成功
 			//放入session
-			session.setAttribute(Constants.USER_SESSION, user);
+			session.setAttribute(Constants.USER_SESSION, loginuser);
 			//页面跳转（frame.jsp）
-			return "redirect:/user/main.html";
+			if(user == 1)
+				return "redirect:/user/main_stud.html";
+			return "redirect:/user/main_admin.html";
 			//response.sendRedirect("jsp/frame.jsp");
 		}else{
-			//页面跳转（login.jsp）带出提示信息--转发
-			request.setAttribute("error", "用户名或密码不正确");
 			return "login";
 		}
 	}
-	@RequestMapping(value="/main.html")
-	public String main(HttpSession session){
+	
+	@RequestMapping(value="/main_admin.html")
+	public String main_admin(HttpSession session){
 		if(session.getAttribute(Constants.USER_SESSION) == null){
 			return "redirect:/user/login.html";
 		}
-		return "frame";
+		return "/admin/frame";
+	}
+
+	@RequestMapping(value="/main_stud.html")
+	public String main_stud(HttpSession session){
+		if(session.getAttribute(Constants.USER_SESSION) == null){
+			return "redirect:/user/login.html";
+		}
+		return "/user/frame";
 	}
 	
 	@RequestMapping(value="/logout.html")
@@ -64,8 +91,8 @@ public class UserController{
 	@RequestMapping(value="/exlogin.html",method=RequestMethod.GET)
 	public String exLogin(@RequestParam String userId,@RequestParam String userPassword){
 		//调用service方法，进行用户匹配
-		User user = userService.login(userId,userPassword);
-		if(null == user){//登录失败
+		int user = userService.login(userId,userPassword);
+		if(0 == user){//登录失败
 			throw new RuntimeException("用户名或者密码不正确！");
 		}
 		return "redirect:/user/main.html";

@@ -53,8 +53,13 @@ public class User {
 	public void setIdPicPath(String idPicPath) {
 		this.idPicPath = idPicPath;
 	}
+	public User() {}
 
-	public User(){}
+	public User(String userId,String userPassword,Integer roleId){
+		this.userId = userId;
+		this.userPassword = userPassword;
+		this.roleId = roleId;
+	}
 	
 	public User(String userId,String userpassword,String userName,String userPassword,
 			String gender,String grade,String major,String Sclass,String telephone,
