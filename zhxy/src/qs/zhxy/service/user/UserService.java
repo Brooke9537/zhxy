@@ -64,6 +64,8 @@ public interface UserService {
 	 * @return
 	 */
 	public boolean modify(User user);
+
+	public User login_user(String userId,String userPassword);
 	
 	
 	

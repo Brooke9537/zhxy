@@ -86,6 +86,31 @@ public class UserServiceImpl implements UserService{
 		}
 		return user;
 	}
+	
+	public User login_user(String userId, String userPassword) {
+		// TODO Auto-generated method stub
+		Connection connection = null;
+		User user = null;
+		try {
+			connection = BaseDao.getConnection();
+			user = userDao.getLoginUser(connection, userId);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			BaseDao.closeResource(connection, null, null);
+		}
+		
+		//匹配密码
+		if(null != user){
+			if(!user.getUserPassword().equals(userPassword))
+				user = null;
+		}
+		
+		return user;
+	}
+	
+	
 	@Override
 	public List<User> getUserList(String queryUserName,int currentPageNo, int pageSize) {
 		// TODO Auto-generated method stub

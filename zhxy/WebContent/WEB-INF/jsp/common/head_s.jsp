@@ -80,7 +80,7 @@
       <div class="am-panel am-panel-default admin-sidebar-panel">
         <div class="am-panel-bd">
           <p><span class="am-icon-bookmark"></span> 公告</p>
-          <p>测试版正式上线！顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶</p>
+          <p>${gg }</p>
         </div>
       </div>
 

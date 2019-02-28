@@ -6,6 +6,8 @@ import java.io.File;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -37,7 +39,6 @@ import qs.zhxy.tools.PageSupport;
 @Controller
 @RequestMapping("/user")
 public class UserController{
-	
 	@Resource
 	private UserService userService;
 	@Resource
@@ -52,33 +53,35 @@ public class UserController{
 	public String doLogin(@RequestParam String userId,@RequestParam String userPassword,HttpServletRequest request,HttpSession session){
 		//调用service方法，进行用户匹配
 		int user = userService.login(userId,userPassword);
-		User loginuser = new User(userId,userPassword,user);
+		User loginuser = userService.login_user(userId,userPassword);
 		if(0 != user){//登录成功
 			//放入session
 			session.setAttribute(Constants.USER_SESSION, loginuser);
 			//页面跳转（frame.jsp）
 			if(user == 1)
-				return "redirect:/user/main_stud.html";
-			return "redirect:/user/main_admin.html";
+				return "redirect:/user/main.html";
+			return "redirect:/user/admin.html";
 			//response.sendRedirect("jsp/frame.jsp");
 		}else{
 			return "login";
 		}
 	}
-	
-	@RequestMapping(value="/main_admin.html")
-	public String main_admin(HttpSession session){
+	public String gonggao = "测试公告";
+	@RequestMapping(value="/admin.html")
+	public String main_admin(HttpSession session, Map<String, Object> map){
 		if(session.getAttribute(Constants.USER_SESSION) == null){
 			return "redirect:/user/login.html";
 		}
+		map.put("gg", gonggao);
 		return "/admin/frame";
 	}
 
-	@RequestMapping(value="/main_stud.html")
-	public String main_stud(HttpSession session){
+	@RequestMapping(value="/main.html")
+	public String main_stud(HttpSession session, Map<String, Object> map){
 		if(session.getAttribute(Constants.USER_SESSION) == null){
 			return "redirect:/user/login.html";
 		}
+		map.put("gg", gonggao);
 		return "/user/frame";
 	}
 	
