@@ -87,6 +87,6 @@
     </div>
   </div>
  <!--主体内容-->
- <div class="admin-content"  style="height: 95%;">
+ <div class="admin-content">
      <input type="hidden" id="path" name="path" value="${pageContext.request.contextPath }"/>
      <input type="hidden" id="referer" name="referer" value="<%=request.getHeader("Referer")%>"/>
