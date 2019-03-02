@@ -60,7 +60,7 @@
   <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
     <div class="am-offcanvas-bar admin-offcanvas-bar">
       <ul class="am-list admin-sidebar-list">
-        <li><a href="/zhxy/user/main.html"><span class="am-icon-home"></span> 首页 </a></li>
+        <li><a href="/zhxy/user/admin.html"><span class="am-icon-home"></span> 首页 </a></li>
         <li><a href="${pageContext.request.contextPath}/user/useradd.html"><span class="am-icon-home"></span> 个人信息 </a></li>
 
         <li class="admin-parent">
