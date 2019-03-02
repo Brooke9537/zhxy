@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/jsp/common/head_s.jsp"%>
+<!DOCTYPE html>、
+<head>
+
  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Amaze UI Admin table Examples</title>
+ <title>学生心理咨询预约成功界面</title>
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="keywords" content="table">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="renderer" content="webkit">
@@ -13,52 +16,48 @@
   <meta name="apple-mobile-web-app-title" content="Amaze UI" />
   <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
   <link rel="stylesheet" href="assets/css/admin.css">
-        <div class="right">
-           <div class="admin-content">
-            <div class="admin-content-body">
-            	<div class="am-g">
-            	<div class="am-cf am-padding am-padding-bottom-0">
-        			<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">你现在所在的位置是:</strong> >> <small>图书信息页面</small>
-        			</div>
-      			</div>
-      			<div class="am-u-sm-12 am-u-md-3">
-         			 <div class="am-input-group am-input-group-sm">
-           			 	<form method="post" action="${pageContext.request.contextPath }/user/booklist.html">
-							<input name="method" value="query" class="input-text" type="hidden">
-						    <input name="queryBookName" class="input-text"	type="text" value="${queryBookName }">
-					 		<input type="hidden" name="pageIndex" value="1"/>
-					
-						</form>
-          			 	<span class="am-input-group-btn">
-            		 	<button class="am-btn am-btn-default" type="button">查询</button>
-          			 </span>
-          			</div>
-       			 </div>
-            		<div class="am-u-sm-12">
-          				<form class="am-form">
-          				<table class="am-table am-table-striped am-table-hover table-main">
-              			<thead>
-              			<tr>
-               				<th class="table-id">书籍编号</th>
-               				<th class="table-name">书名</th>
-               				<th class="table-gender">价格</th>
-               				
-              			</tr>
-            			</thead>
-             	 <tbody>
+</head>
+
+<div class="right">
+  <div class="admin-content">
+  	<div class="admin-content-body">
+    <div class="am-cf am-padding am-padding-bottom-0">
+      <div class="am-fl am-cf">
+        <strong class="am-text-primary am-text-lg">你现在所在的位置是:</strong> >> <small>心理咨询预约完成页面</small> 
+      </div>
+    </div>
+
+    <div class="am-u-sm-12">
+          <form class="am-form">
+          	<table class="am-table am-table-striped am-table-hover table-main">
+             <thead>
+              	<tr>
+               	<th class="table-id">学号 </th>
+               	<th class="table-name">预约姓名</th>
+               	<th class="table-gender">预约时间</th>
+               	<th class="table-gender">预约状态</th>               				
+              	</tr>
+            </thead>
+             <tbody>
               		<tr>
-              		<c:forEach var="book" items="${bookList }" varStatus="status">
+              		<c:forEach var="datestudent" items="${datestudentList }" varStatus="status">
 						<tr>
 						<td>
-						<span>${book.bookId }</span>
+						<span>${datestudent.stuId }</span>
 						</td>
 						<td>
-						<span>${book.bookName }</span>
+						<span>${datestudent.stuName }</span>
 						</td>
 						<td>
-						<span>${book.isborrow }</span>
+						<span>${ddatastudent.gender }</span>
 						</td>
-						
+						<td>
+						<span>${datestudent.major }</span>
+						</td><td>
+						<span>${datestudent.telephtone }</span>
+						</td><td>
+						<span>${datestudent.time }</span>
+						</td>
 						<td>
 						<div class="am-btn-toolbar">
                     		<div class="am-btn-group am-btn-group-xs">
@@ -86,5 +85,6 @@
         </div>
       </div>
     </div>
+
 
 <%@include file="/WEB-INF/jsp/common/foot.jsp" %>

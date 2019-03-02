@@ -221,6 +221,14 @@ public class UserController{
 		return "booklist";
 	}
 	
+	@RequestMapping(value="/studentdating.html",method=RequestMethod.GET)
+	public String dating(@ModelAttribute("user") User user) {
+//		User user = userService.getUserByUserId(userId);
+//		model.addAttribute(user);
+		return "studentdating";
+	}
+	
+	
 	
 	@RequestMapping(value="/syserror.html")
 	public String sysError(){
@@ -231,6 +239,9 @@ public class UserController{
 	public String addUser(@ModelAttribute("user") User user){
 		return "useradd";
 	}
+	
+	
+	
 	
 /*	@RequestMapping(value="/useradd.html",method=RequestMethod.GET)
 	public String addUser(User user,Model model){

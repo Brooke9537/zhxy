@@ -2,6 +2,7 @@
 
 import java.sql.Connection;
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -41,6 +42,24 @@ public class UserDaoImpl implements UserDao{
 		return updateRows;
 	}
 
+//	
+//	@Override
+//	public  int dating(Connection connection, User user)throws Exception{
+//		int flag = 0;
+//		PreparedStatement pstm = null;
+//		if(null != connection){
+//			String sql = "update zhxy_dating set stuName=?,"+
+//				"gender=?,major=?,telephone=?,time=? where stuId = ? ";
+//			Object[] params = {user.getUserName(),user.getGender(),user.getMajor(),
+//					user.getTelephone(),user.getWorktime(),user.getUserId()};
+//			flag = BaseDao.execute(connection, pstm, sql, params);
+//			BaseDao.closeResource(null, pstm, null);
+//		}
+//		return flag;
+//	}
+	
+	
+			
 	@Override
 	public User getLoginUser(Connection connection, String userId)
 			throws Exception {

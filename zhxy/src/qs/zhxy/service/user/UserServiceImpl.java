@@ -22,6 +22,23 @@ public class UserServiceImpl implements UserService{
 	@Resource
 	private UserDao userDao;
 	
+//	@Override
+//	public boolean dating(User user) {
+//		Connection connection = null;
+//		boolean flag = false;
+//		try {
+//			connection = BaseDao.getConnection();
+//			if(userDao.dating(connection,user) > 0)
+//				flag = true;
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}finally{
+//			BaseDao.closeResource(connection, null, null);
+//		}
+//		return flag;
+//	}
+	
 	@Override
 	public boolean add(User user) {
 		// TODO Auto-generated method stub

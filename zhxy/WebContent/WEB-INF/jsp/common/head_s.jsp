@@ -67,8 +67,8 @@
             <a class="am-cf" data-am-collapse="{parent: '#accordion', target: '#collapse-nav2'}"><span class="am-icon-file"></span> 心理咨询预约 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
             <ul class="am-panel-collapse am-collapse am-list admin-sidebar-sub am-in" id="collapse-nav2">
               <li><a href="${pageContext.request.contextPath }/user/userlist.html" class="am-cf"><span class="am-icon-th"></span>  待确定预约<span class="am-badge am-badge-danger am-margin-right am-fr">1</span></a></li>
-              <li><a href="${pageContext.request.contextPath }/user/userlist.html"><span class="am-icon-puzzle-piece"></span>  未完成预约<span class="am-badge am-badge-warning am-margin-right am-fr">2</span></a></li>
-              <li><a href="${pageContext.request.contextPath }/user/userlist.html"><span class="am-icon-check"></span>  已完成预约<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
+              <li><a href="${pageContext.request.contextPath }/user/studentdating.html"><span class="am-icon-puzzle-piece"></span> 预约<span class="am-badge am-badge-warning am-margin-right am-fr">2</span></a></li>
+              <li><a href="${pageContext.request.contextPath }/user/booklist.html"><span class="am-icon-check"></span>  已完成预约<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
             </ul>
           </li>
         <li><a href="${pageContext.request.contextPath }/user/userlist.html"><span class="am-icon-table"></span> 预约计划</a></li>

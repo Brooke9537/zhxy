@@ -325,7 +325,13 @@ ul {
 }
 
 .table-id {
-  width: 50px;
+  width: 200px;
+}
+.table-name {
+  width: 300px;
+}
+.table-type{
+  width:100px
 }
 
 @media only screen and (max-width: 640px) {
