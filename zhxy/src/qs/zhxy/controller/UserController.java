@@ -255,7 +255,7 @@ public class UserController{
 		user.setCreationDate(new Date());
 		if(userService.add(user)){
 			return "redirect:/user/userlist.html";
-		}
+		}//
 		return "useradd";
 	}*/
 	
