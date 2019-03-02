@@ -31,8 +31,10 @@ import org.springframework.web.multipart.MultipartFile;
 import qs.zhxy.controller.UserController;
 import qs.zhxy.pojo.Role;
 import qs.zhxy.pojo.User;
+import qs.zhxy.pojo.Book;
 import qs.zhxy.service.role.RoleService;
 import qs.zhxy.service.user.UserService;
+import qs.zhxy.service.book.BookService;
 import qs.zhxy.tools.Constants;
 import qs.zhxy.tools.PageSupport;
 
@@ -43,6 +45,8 @@ public class UserController{
 	private UserService userService;
 	@Resource
 	private RoleService roleService;
+	@Resource
+	private BookService bookService;
 	
 	@RequestMapping(value="/login.html")
 	public String login(){
@@ -162,6 +166,70 @@ public class UserController{
 		return "userlist";
 	}
 	
+	@RequestMapping(value="/booklist.html")
+	public String getBookList(Model model,
+							@RequestParam(value="queryname",required=false) String queryBookName,
+							//@RequestParam(value="queryUserRole",required=false) String queryRoleId,
+							@RequestParam(value="pageIndex",required=false) String pageIndex){
+				
+		List<Book> bookList = null;
+		//设置页面容量
+    	int pageSize = Constants.pageSize;
+    	//当前页码
+    	int currentPageNo = 1;
+	
+		if(queryBookName == null){
+			queryBookName = "";
+		}
+//		if(queryRoleId != null && !queryRoleId.equals("")){
+//			_queryRoleId = Integer.parseInt(queryRoleId);
+//		}
+		
+    	if(pageIndex != null){
+    		try{
+    			currentPageNo = Integer.valueOf(pageIndex);
+    		}catch(NumberFormatException e){
+    			return "redirect:/user/syserror.html";
+    			//response.sendRedirect("syserror.jsp");
+    		}
+    	}	
+    	//总数量（表）	
+    	int totalCount	= bookService.getBookCount(queryBookName);
+    	//总页数
+    	PageSupport pages=new PageSupport();
+    	pages.setCurrentPageNo(currentPageNo);
+    	pages.setPageSize(pageSize);
+    	pages.setTotalCount(totalCount);
+    	int totalPageCount = pages.getTotalPageCount();
+    	//控制首页和尾页
+    	if(currentPageNo < 1){
+    		currentPageNo = 1;
+    	}else if(currentPageNo > totalPageCount){
+    		currentPageNo = totalPageCount;
+    	}
+		bookList = bookService.getBookList(queryBookName,currentPageNo,pageSize);
+		model.addAttribute("bookList", bookList);
+		System.out.println("name:"+bookList.get(0).getBookName());
+//		List<Role> roleList = null;
+//		roleList = roleService.getRoleList();
+//		model.addAttribute("roleList", roleList);
+		model.addAttribute("queryBookName", queryBookName);
+		//model.addAttribute("queryRoleId", queryRoleId);
+		model.addAttribute("totalPageCount", totalPageCount);
+		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("currentPageNo", currentPageNo);
+		return "booklist";
+	}
+	
+	@RequestMapping(value="/studentdating.html",method=RequestMethod.GET)
+	public String dating(@ModelAttribute("user") User user) {
+//		User user = userService.getUserByUserId(userId);
+//		model.addAttribute(user);
+		return "studentdating";
+	}
+	
+	
+	
 	@RequestMapping(value="/syserror.html")
 	public String sysError(){
 		return "syserror";
@@ -171,6 +239,9 @@ public class UserController{
 	public String addUser(@ModelAttribute("user") User user){
 		return "useradd";
 	}
+	
+	
+	
 	
 /*	@RequestMapping(value="/useradd.html",method=RequestMethod.GET)
 	public String addUser(User user,Model model){
@@ -184,7 +255,7 @@ public class UserController{
 		user.setCreationDate(new Date());
 		if(userService.add(user)){
 			return "redirect:/user/userlist.html";
-		}
+		}//
 		return "useradd";
 	}*/
 	

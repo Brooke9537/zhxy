@@ -19,6 +19,9 @@ public interface UserService {
 	 * @param userPassword
 	 * @return
 	 */
+//	public boolean dating(User user);
+	
+	
 	public int login(String userId,String userPassword);
 	
 	/**

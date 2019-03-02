@@ -41,7 +41,6 @@
   <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
 
     <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
-      <li><a href="javascript:;"><span class="am-icon-envelope-o"></span> 收件箱 <span class="am-badge am-badge-warning">5</span></a></li>
       <li class="am-dropdown" data-am-dropdown>
         <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
           <span class="am-icon-users"></span>  ${userSession.userName } , 欢迎你！ <span class="am-icon-caret-down"></span>
@@ -61,7 +60,7 @@
   <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
     <div class="am-offcanvas-bar admin-offcanvas-bar">
       <ul class="am-list admin-sidebar-list">
-        <li><a href="/zhxy/user/main.html"><span class="am-icon-home"></span> 首页 </a></li>
+        <li><a href="/zhxy/user/admin.html"><span class="am-icon-home"></span> 首页 </a></li>
         <li><a href="${pageContext.request.contextPath}/user/useradd.html"><span class="am-icon-home"></span> 个人信息 </a></li>
 
         <li class="admin-parent">
@@ -69,7 +68,7 @@
             <ul class="am-panel-collapse am-collapse am-list admin-sidebar-sub am-in" id="collapse-nav2">
               <li><a href="${pageContext.request.contextPath }/user/userlist.html" class="am-cf"><span class="am-icon-th"></span>  待确定预约<span class="am-badge am-badge-danger am-margin-right am-fr">1</span></a></li>
               <li><a href="${pageContext.request.contextPath }/user/userlist.html"><span class="am-icon-puzzle-piece"></span>  未完成预约<span class="am-badge am-badge-warning am-margin-right am-fr">2</span></a></li>
-              <li><a href="${pageContext.request.contextPath }/user/userlist.html"><span class="am-icon-check"></span>  已完成预约<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
+              <li><a href="${pageContext.request.contextPath }/user/booklist.html"><span class="am-icon-check"></span>  已完成预约<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
             </ul>
           </li>
         <li><a href="${pageContext.request.contextPath }/user/userlist.html"><span class="am-icon-table"></span> 预约计划</a></li>
