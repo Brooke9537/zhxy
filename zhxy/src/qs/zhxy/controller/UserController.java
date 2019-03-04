@@ -70,22 +70,19 @@ public class UserController{
 			return "login";
 		}
 	}
-	public String gonggao = "测试公告";
 	@RequestMapping(value="/admin.html")
-	public String main_admin(HttpSession session, Map<String, Object> map){
+	public String main_admin(HttpSession session){
 		if(session.getAttribute(Constants.USER_SESSION) == null){
 			return "redirect:/user/login.html";
 		}
-		map.put("gg", gonggao);
 		return "/admin/frame";
 	}
 
 	@RequestMapping(value="/main.html")
-	public String main_stud(HttpSession session, Map<String, Object> map){
+	public String main_stud(HttpSession session){
 		if(session.getAttribute(Constants.USER_SESSION) == null){
 			return "redirect:/user/login.html";
 		}
-		map.put("gg", gonggao);
 		return "/user/frame";
 	}
 	
