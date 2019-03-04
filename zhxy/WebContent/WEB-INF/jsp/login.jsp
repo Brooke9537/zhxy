@@ -44,18 +44,11 @@
       <label for="password">密码:</label>
       <input type="password" name="userPassword" id="userPassword" value="">
       <br>
-      <label for="remember-me">
-        <input id="remember-me" type="checkbox">
-        记住密码
-      </label>
-      <br/><br/>
       <div class="am-cf">
         <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl">
-        <a href="forget.html" class="am-btn am-btn-sm am-btn-default am-fr">忘记密码?</a>
       </div>
     </form>
     <hr>
-    
 <footer class="footer">
   <p>智慧校园 © 2019</p>
 </footer>

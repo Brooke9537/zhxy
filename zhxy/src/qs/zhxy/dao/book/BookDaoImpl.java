@@ -34,9 +34,10 @@ public class BookDaoImpl implements BookDao{
 			StringBuffer sql = new StringBuffer();
 			sql.append("select * from zhxy_book");
 			List<Object> list = new ArrayList<Object>();
+			System.out.println(bookName);
 			if(!StringUtils.isNullOrEmpty(bookName)){
-				sql.append(" BookName like ?");
-				list.add("%"+bookName+"%");
+				sql.append(" where BookName like ?");
+				list.add(bookName);
 			}
 			
 			sql.append(" order by BookId DESC limit ?,?");

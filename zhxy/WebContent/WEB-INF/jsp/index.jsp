@@ -139,7 +139,10 @@
       <h1 class="get-title">智慧校园——只为同学</h1>
 
       <p>
-        加入我们，与我们共同服务校园、服务同学！
+        老师您好，本系统管理员账户为admin，密码为123456，此账号为管理员账号即老师账号 ，<br/>
+        学生账号为student1，密码为123456。
+     老师辛苦了<br/>
+     <a href="/zhxy/login">点击此处登录</a>或点击右上方登录。
       </p>
 
       <p>
@@ -197,21 +200,16 @@
 <div id="about" class="about">
   <div class="am-g am-container">
     <div class="am-u-lg-12">
-      <h2 class="about-title about-color">Amaze UI 崇尚开放、自由，非常欢迎大家的参与</h2>
 
       <div class="am-g">
         <div class="am-u-lg-6 am-u-md-4 am-u-sm-12">
             
-          <form class="am-form">
-            <label for="name" class="about-color">你的姓名</label>
-            
-            <input id="name" type="text">
+          <form class="am-form" action="/zhxy/user/fankui.do" method="POST">
+            <label for="address" class="about-color">你的姓名</label>
+            <input name="address" id="address" type="text">
             <br/>
-            <label for="email" class="about-color">你的邮箱</label>
-            <input id="email" type="email">
-            <br/>
-            <label for="message" class="about-color">你的留言</label>
-            <textarea id="message"></textarea>
+            <label for="content" class="about-color">你的留言</label>
+            <textarea rows="12" name="content" id="content"></textarea>
             <br/>
             <button type="submit" class="am-btn am-btn-primary am-btn-sm"><i class="am-icon-check"></i> 提 交</button>
           </form>
@@ -221,11 +219,16 @@
         <div class="am-u-lg-6 am-u-md-8 am-u-sm-12">
           <h4 class="about-color">关于我们</h4>
 
-          <p>AllMobilize Inc (美通云动科技有限公司)
-            由前微软美国总部IE浏览器核心研发团队成员及移动互联网行业专家在美国西雅图创立，旨在解决网页在不同移动设备屏幕上的适配问题。基于国际专利技术并结合最前沿的HTML5技术，云适配解决方案可以帮助企业快速将桌面版网站适配到各种移动设备终端的屏幕上，不仅显著地提高了企业网站的用户体验以及销售转化率，而且大幅度地节省了企业开发和维护移动网站的费用。</p>
+          <p>智慧校园心理预约系统，意在实现在大学生成长成才过程中从防治心理疾病、加强心理调节、完善心理品质三个层次履行教育职能 ，
+		          实现服务功能，为师生提供主动、便捷、及时、有效的心理健康服务；通过系统的在线预约功能，学生可以提前和辅导老师进行预约，
+		          在规定的时间进行心理咨询，避免了排队等待造成的时间的浪费，切实提高大学生的心理健康教育与咨询工作效率与质量，
+		          为大学生健康成长和全面成才服务。</p>
           <h4 class="about-color">团队介绍</h4>
 
-          <p>AllMobilize Inc 获得了微软创投孵化器的支持，其领先科技已得到全球多家企业及机构的认可与信赖，客户包括全球500强企业、美国政府、国内政府机关、国内外上市公司、以及互联网标准化组织W3C。</p>
+          <p>本系统的使用人员，主要包括学生、辅导老师和系统管理员。学生通过本系统在自己合适的时间提出预约申请，
+		          并在约定的时间及时进行交流沟通，节省漫无目的的排队时间，提高效率。辅导老师进入本系统，
+		          可以接受或拒绝学生的预约，查看学生的预约咨询记录，分析该学生的心理健康状况，
+		          能够尽早地发现和预防学生较为普遍存在的各种心理问题。</p>
         </div>
       </div>
     </div>

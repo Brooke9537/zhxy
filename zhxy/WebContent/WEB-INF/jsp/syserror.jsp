@@ -1,14 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="/WEB-INF/jsp/common/head_t.jsp"%>
-
-
+      <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/statics/images/logo.png">
+  <link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/statics/css/admin.css">
 <div class="admin-content-body">
-      <div class="am-cf am-padding am-padding-bottom-0">
-        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">404</strong> / <small>That’s an error</small></div>
-      </div>
-
-      <hr>
 
       <div class="am-g">
         <div class="am-u-sm-12">
@@ -32,5 +27,4 @@
         </div>
       </div>
     </div>
-    <%@include file="/WEB-INF/jsp/common/foot.jsp" %>
     

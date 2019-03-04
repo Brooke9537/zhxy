@@ -4,18 +4,9 @@
          <div class="admin-content-body">
          	<div class="am-g">
          	<div class="am-cf am-padding am-padding-bottom-0">
-     			<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">查询图书</strong> / <small>Book</small>
+     			<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">我的书架</strong> / <small>MyBook</small>
      			</div>
    			</div><hr>
-   			<div class="am-u-sm-12 am-u-md-3">
-      			 <div class="am-input-group am-input-group-sm">
-        		<form method="GET" action="${pageContext.request.contextPath }/user/booklist.html">
-			    <input name="queryBookName" class="input-text"	type="text" value="${queryBookName }">
-				<input type="submit" class="am-btn am-btn-default" value="查询">
-			</form>
-       			 	
-       			</div>
-    			 </div>
          		<div class="am-u-sm-12">
        				
        				<table class="am-table am-table-striped am-table-hover table-main">
@@ -23,6 +14,7 @@
            			<tr>
             				<th class="table-id">书籍编号</th>
             				<th class="table-name">书名</th>
+            				
             				
            			</tr>
          			</thead>
@@ -41,8 +33,8 @@
 			<div class="am-btn-toolbar">			
                  		<div class="am-btn-group am-btn-group-xs">
                  		<form>
-                 		<input type="hidden" id="BookId" value="${book.bookId }">
-                 		<input type="hidden" id="BookName" value="${book.bookName }">
+                 		<input type="hidden" id="BookId">
+                 		<input type="hidden" id="BookName">
                  		<input type="hidden" id="isborrow" value="${userSession.userId }">
                    		<button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 查看</button>
                    		</form></div>
@@ -52,6 +44,8 @@
 		</c:forEach>
            		</tr>
            	</tbody>
+         	
+       
 </table>
 
 <input type="hidden" id="totalPageCount" value="${totalPageCount}"/>

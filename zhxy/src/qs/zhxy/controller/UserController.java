@@ -1,9 +1,9 @@
 ﻿package qs.zhxy.controller;
 import java.io.File;
-
-
-
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -29,9 +29,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import qs.zhxy.controller.UserController;
+import qs.zhxy.dao.BaseDao;
 import qs.zhxy.pojo.Role;
 import qs.zhxy.pojo.User;
 import qs.zhxy.pojo.Book;
+import qs.zhxy.pojo.dating;
 import qs.zhxy.service.role.RoleService;
 import qs.zhxy.service.user.UserService;
 import qs.zhxy.service.book.BookService;
@@ -105,70 +107,28 @@ public class UserController{
 	/*@ExceptionHandler(value={RuntimeException.class})
 	public String handlerException(RuntimeException e,HttpServletRequest req){
 		req.setAttribute("e", e);
-		return "error";
+		return "syserror";
 	}*/
 	
-	@SuppressWarnings("unused")
-	@RequestMapping(value="/userlist.html")
-	public String getUserList(Model model,
-							@RequestParam(value="queryname",required=false) String queryUserName,
-							//@RequestParam(value="queryUserRole",required=false) String queryRoleId,
-							@RequestParam(value="pageIndex",required=false) String pageIndex){
-		int _queryRoleId = 0;		
-		List<User> userList = null;
-		//设置页面容量
-    	int pageSize = Constants.pageSize;
-    	//当前页码
-    	int currentPageNo = 1;
 	
-		if(queryUserName == null){
-			queryUserName = "";
+	@RequestMapping(value="/userinfo.html")
+	public String getUserList(HttpSession session){
+		if(session.getAttribute(Constants.USER_SESSION) == null){
+			return "redirect:/user/login.html";
 		}
-//		if(queryRoleId != null && !queryRoleId.equals("")){
-//			_queryRoleId = Integer.parseInt(queryRoleId);
-//		}
-		
-    	if(pageIndex != null){
-    		try{
-    			currentPageNo = Integer.valueOf(pageIndex);
-    		}catch(NumberFormatException e){
-    			return "redirect:/user/syserror.html";
-    			//response.sendRedirect("syserror.jsp");
-    		}
-    	}	
-    	//总数量（表）	
-    	int totalCount	= userService.getUserCount(queryUserName);
-    	//总页数
-    	PageSupport pages=new PageSupport();
-    	pages.setCurrentPageNo(currentPageNo);
-    	pages.setPageSize(pageSize);
-    	pages.setTotalCount(totalCount);
-    	int totalPageCount = pages.getTotalPageCount();
-    	//控制首页和尾页
-    	if(currentPageNo < 1){
-    		currentPageNo = 1;
-    	}else if(currentPageNo > totalPageCount){
-    		currentPageNo = totalPageCount;
-    	}
-		userList = userService.getUserList(queryUserName,currentPageNo,pageSize);
-		model.addAttribute("userList", userList);
-//		List<Role> roleList = null;
-//		roleList = roleService.getRoleList();
-//		model.addAttribute("roleList", roleList);
-		model.addAttribute("queryUserName", queryUserName);
-		//model.addAttribute("queryRoleId", queryRoleId);
-		model.addAttribute("totalPageCount", totalPageCount);
-		model.addAttribute("totalCount", totalCount);
-		model.addAttribute("currentPageNo", currentPageNo);
-		return "userlist";
+		return "userinfo";
 	}
 	
-	@RequestMapping(value="/booklist.html")
+
+	
+	
+	@RequestMapping(value="/booklist.html",method=RequestMethod.GET)
 	public String getBookList(Model model,
-							@RequestParam(value="queryname",required=false) String queryBookName,
-							//@RequestParam(value="queryUserRole",required=false) String queryRoleId,
-							@RequestParam(value="pageIndex",required=false) String pageIndex){
-				
+							@RequestParam(value="queryBookName",required=false) String queryBookName,
+							HttpSession session){
+		if(session.getAttribute(Constants.USER_SESSION) == null){
+			return "redirect:/user/login.html";
+		}
 		List<Book> bookList = null;
 		//设置页面容量
     	int pageSize = Constants.pageSize;
@@ -178,18 +138,7 @@ public class UserController{
 		if(queryBookName == null){
 			queryBookName = "";
 		}
-//		if(queryRoleId != null && !queryRoleId.equals("")){
-//			_queryRoleId = Integer.parseInt(queryRoleId);
-//		}
 		
-    	if(pageIndex != null){
-    		try{
-    			currentPageNo = Integer.valueOf(pageIndex);
-    		}catch(NumberFormatException e){
-    			return "redirect:/user/syserror.html";
-    			//response.sendRedirect("syserror.jsp");
-    		}
-    	}	
     	//总数量（表）	
     	int totalCount	= bookService.getBookCount(queryBookName);
     	//总页数
@@ -206,7 +155,6 @@ public class UserController{
     	}
 		bookList = bookService.getBookList(queryBookName,currentPageNo,pageSize);
 		model.addAttribute("bookList", bookList);
-		System.out.println("name:"+bookList.get(0).getBookName());
 //		List<Role> roleList = null;
 //		roleList = roleService.getRoleList();
 //		model.addAttribute("roleList", roleList);
@@ -218,13 +166,142 @@ public class UserController{
 		return "booklist";
 	}
 	
-	@RequestMapping(value="/studentdating.html",method=RequestMethod.GET)
-	public String dating(@ModelAttribute("user") User user) {
+	@RequestMapping(value="/mybook.html",method=RequestMethod.GET)
+	public String bybook(Model model,
+						@RequestParam(value="BookId",required=false) String BookId,
+						//@RequestParam(value="queryUserRole",required=false) String queryRoleId,
+						@RequestParam(value="pageIndex",required=false) String pageIndex,
+						HttpSession session) {
+		if(session.getAttribute(Constants.USER_SESSION) == null){
+			return "redirect:/user/login.html";
+		}
+		return "mybook";
+	}
+	
+	
+	
+	@RequestMapping(value="/studentdating.html")
+	public String dating(HttpSession session) {
+		if(session.getAttribute(Constants.USER_SESSION) == null){
+			return "redirect:/user/login.html";
+		}
 //		User user = userService.getUserByUserId(userId);
 //		model.addAttribute(user);
 		return "studentdating";
 	}
 	
+	@RequestMapping(value="/date.do",method=RequestMethod.POST)
+	public String dodate(@RequestParam(value="stuId",required=false) String stuId,
+						@RequestParam(value="stuName",required=false) String stuName,
+						@RequestParam(value="telephone",required=false) String telephone,
+						@RequestParam(value="DateTime",required=false) String DateTime,
+						@RequestParam(value="DateDay",required=false) String DateDay,							
+						HttpSession session) throws Exception {
+		if(session.getAttribute(Constants.USER_SESSION) == null){
+			return "redirect:/user/login.html";
+		}
+		PreparedStatement pstm = null;
+		int updateRows = 0;
+		Connection connection = BaseDao.getConnection();
+		String wait="等待老师接受预约";
+		String sql = "INSERT INTO `zhxy`.`zhxy_dating` (`stuId`, `stuName`, `telephone`, `date`, `time`, `statue`) VALUES (?,?,?,?,?,?);";
+		Object[] params = {stuId,stuName,telephone,DateDay,DateTime,wait};
+		updateRows = BaseDao.execute(connection, pstm, sql, params);
+		if(updateRows != 0) {
+			BaseDao.closeResource(null, pstm, null);
+			return "redirect:/user/datingcomplete.html";
+		}else {
+			BaseDao.closeResource(null, pstm, null);
+			return "syserror";
+		}
+	}
+	
+	@RequestMapping(value="/datingcomplete.html")
+	public String dcomp(Map<String, Object> map,HttpSession session) throws Exception{
+		if(session.getAttribute(Constants.USER_SESSION) == null){
+			return "redirect:/user/login.html";
+		}
+		PreparedStatement pstm = null;
+		User user=(User) session.getAttribute(Constants.USER_SESSION);
+		String userid = user.getUserId();
+		System.out.println(userid);
+		ResultSet rs = null;
+		Connection connection = BaseDao.getConnection();
+		String sql = "select * from zhxy_dating where stuId=? ";
+		Object[] params = { userid };
+		rs = BaseDao.execute(connection, pstm, rs, sql, params);
+		List<dating> datingList =  new ArrayList<dating>();
+		while(rs.next()){
+			dating _dating = new dating();
+			
+			_dating.setStuId(rs.getString("stuId"));
+			_dating.setStuName(rs.getString("stuName"));
+			_dating.setTelephone(rs.getString("telephone"));
+			_dating.setDate(rs.getString("date"));
+			_dating.setTime(rs.getString("time"));
+			_dating.setStatue(rs.getString("statue"));
+			datingList.add(_dating);
+		}
+		map.put("datingList", datingList);
+		return "datingcomplete";
+	}
+	
+	@RequestMapping(value="/baoxiu.html")
+	public String baoxiu(HttpSession session) {
+		if(session.getAttribute(Constants.USER_SESSION) == null){
+			return "redirect:/user/login.html";
+		}
+		
+		return "baoxiu";
+	}
+	
+	@RequestMapping(value="/baoxiu.do",method=RequestMethod.POST)
+	public String dobaoxiu(String address,String content,HttpSession session) throws Exception {
+		if(session.getAttribute(Constants.USER_SESSION) == null){
+			return "redirect:/user/login.html";
+		}
+		// TODO Auto-generated method stub
+		PreparedStatement pstm = null;
+		int updateRows = 0;
+		System.out.println(address+content);
+		Connection connection = BaseDao.getConnection();
+		String sql = "insert into zhxy_bx(address,content) values(?,?)";
+		Object[] params = {address,content};
+		updateRows = BaseDao.execute(connection, pstm, sql, params);
+		if(updateRows != 0) {
+			BaseDao.closeResource(null, pstm, null);
+			return "baoxiu";
+		}else {
+			BaseDao.closeResource(null, pstm, null);
+			System.out.println("报修提交失败，数据为：address:"+address+"content:"+content);
+			return "syserror";
+		}
+//		User user = userService.getUserByUserId(userId);
+//		model.addAttribute(user);
+	}
+	
+	
+	@RequestMapping(value="/fankui.do",method=RequestMethod.POST)
+	public String dofankui(String address,String content) throws Exception {
+		// TODO Auto-generated method stub
+		PreparedStatement pstm = null;
+		int updateRows = 0;
+		System.out.println(address+content);
+		Connection connection = BaseDao.getConnection();
+		String sql = "insert into zhxy_bx(address,content) values(?,?)";
+		Object[] params = {address,content};
+		updateRows = BaseDao.execute(connection, pstm, sql, params);
+		if(updateRows != 0) {
+			BaseDao.closeResource(null, pstm, null);
+			return "index";
+		}else {
+			BaseDao.closeResource(null, pstm, null);
+			System.out.println("反馈提交失败，数据为：address:"+address+"content:"+content);
+			return "syserror";
+		}
+//		User user = userService.getUserByUserId(userId);
+//		model.addAttribute(user);
+	}
 	
 	
 	@RequestMapping(value="/syserror.html")
