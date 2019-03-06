@@ -7,53 +7,33 @@
 		<div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">我的书架</strong> / <small>MyBook</small>
 		</div>
 </div><hr>
-   		<div class="am-u-sm-12">
- 				
- 				<table class="am-table am-table-striped am-table-hover table-main">
-     			<thead>
-     			<tr>
-      				<th class="table-id">书籍编号</th>
-      				<th class="table-name">书名</th>
-      				
-      				
-     			</tr>
-   			</thead>
-    	 <tbody>
-     		<tr>
-     		<c:forEach var="book" items="${bookList }" varStatus="status">
-<tr>
-<td>
-<span>${book.bookId }</span>
-</td>
-<td>
-<span>${book.bookName }</span>
-</td>
-
-<td>
-<div class="am-btn-toolbar">			
-              		<div class="am-btn-group am-btn-group-xs">
-              		<form>
-              		<input type="hidden" id="BookId">
-              		<input type="hidden" id="BookName">
-              		<input type="hidden" id="isborrow" value="${userSession.userId }">
-                		<button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 查看</button>
-                		</form></div>
-            		</div>
-</td>
-</tr>
-</c:forEach>
-   		</tr>
-   	</tbody>
-</table>
-
-<input type="hidden" id="totalPageCount" value="${totalPageCount}"/>
-<c:import url="rollpage.jsp">
-    	<c:param name="totalCount" value="${totalCount}"/>
-    	<c:param name="currentPageNo" value="${currentPageNo}"/>
-    	<c:param name="totalPageCount" value="${totalPageCount}"/>
-   	</c:import>
-   
- </div>
+   		<ul class="am-avg-sm-2 am-avg-md-2 am-avg-lg-4 am-margin gallery-list">
+        <li>
+          <a href="#">
+            <img class="am-img-thumbnail am-img-bdrs" src="http://img3m3.ddimg.cn/20/16/25079393-1_w_3.jpg" alt="">
+            <div class="gallery-title"> 人生的智慧</div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img class="am-img-thumbnail am-img-bdrs" src="http://img3m5.ddimg.cn/77/22/26470895-1_w_3.jpg" alt="">
+            <div class="gallery-title">美的进化</div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img class="am-img-thumbnail am-img-bdrs" src="http://img3m3.ddimg.cn/60/23/26487213-1_w_2.jpg" alt="">
+            <div class="gallery-title">我的瓦格纳人生</div>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img class="am-img-thumbnail am-img-bdrs" src="http://img3m5.ddimg.cn/57/14/26445135-1_w_8.jpg" alt="">
+            <div class="gallery-title">生活需要节奏感</div>
+          </a>
+        </li>
+        <p>以上书籍及图片来自当当网。</p>
+      </ul>
   </div>
 </div>
 

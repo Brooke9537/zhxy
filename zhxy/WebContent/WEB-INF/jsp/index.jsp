@@ -119,7 +119,7 @@
             友情链接 <span class="am-icon-caret-down"></span>
           </a>
           <ul class="am-dropdown-content">
-            <li><a href="#">GitHub</a></li>
+            <li><a href="https://github.com/Brooke9537/zhxy">GitHub</a></li>
             <li><a href="#">Gitee</a></li>
             <li><a href="#">Bolg</a></li>
           </ul>
@@ -140,8 +140,7 @@
 
       <p>
         老师您好，本系统管理员账户为admin，密码为123456，此账号为管理员账号即老师账号 ，<br/>
-        学生账号为student1，密码为123456。
-     老师辛苦了<br/>
+        学生账号为student1，密码为123456。<br/>
      <a href="/zhxy/login">点击此处登录</a>或点击右上方登录。
       </p>
 
@@ -209,7 +208,7 @@
             <input name="address" id="address" type="text">
             <br/>
             <label for="content" class="about-color">你的留言</label>
-            <textarea rows="12" name="content" id="content"></textarea>
+            <textarea rows="8" name="content" id="content"></textarea>
             <br/>
             <button type="submit" class="am-btn am-btn-primary am-btn-sm"><i class="am-icon-check"></i> 提 交</button>
           </form>
@@ -217,18 +216,14 @@
         </div>
 
         <div class="am-u-lg-6 am-u-md-8 am-u-sm-12">
-          <h4 class="about-color">关于我们</h4>
+          <h4 class="about-color">项目简介</h4>
 
-          <p>智慧校园心理预约系统，意在实现在大学生成长成才过程中从防治心理疾病、加强心理调节、完善心理品质三个层次履行教育职能 ，
-		          实现服务功能，为师生提供主动、便捷、及时、有效的心理健康服务；通过系统的在线预约功能，学生可以提前和辅导老师进行预约，
-		          在规定的时间进行心理咨询，避免了排队等待造成的时间的浪费，切实提高大学生的心理健康教育与咨询工作效率与质量，
-		          为大学生健康成长和全面成才服务。</p>
-          <h4 class="about-color">团队介绍</h4>
-
-          <p>本系统的使用人员，主要包括学生、辅导老师和系统管理员。学生通过本系统在自己合适的时间提出预约申请，
-		          并在约定的时间及时进行交流沟通，节省漫无目的的排队时间，提高效率。辅导老师进入本系统，
-		          可以接受或拒绝学生的预约，查看学生的预约咨询记录，分析该学生的心理健康状况，
-		          能够尽早地发现和预防学生较为普遍存在的各种心理问题。</p>
+          <p>智慧校园系统从硬件基础、软件基础和应用人员三个方面进行了可行性分析,从面向对象、
+	          系统功能和系统所需数据库及系统界面要求四个方面进行了全面的系统功能需求分析;
+	          从总体设计到详细设计对系统的总体框架、功能模块和数据库进行了详细的划分和设计;
+	          根据系统设计报告的要求，对各个主要功能模块进行了编码实现,并采用动态测试的方法对系统进行了全面系统的测试，
+	          最终开发完成了一个美观大方、功能齐全、有效实用的高校在线心理预约系统。从而有效的弥补了传统心理咨询预约方式的不足，
+	          充分利用了学校的网络资源和心理服务资源,为学生提供更好的心理咨询服务,解决更多的心理问题。</p>
         </div>
       </div>
     </div>

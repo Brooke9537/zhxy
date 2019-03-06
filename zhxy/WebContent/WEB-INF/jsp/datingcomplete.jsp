@@ -5,7 +5,7 @@
  	<div class="admin-content-body">
    <div class="am-cf am-padding am-padding-bottom-0">
      <div class="am-fl am-cf">
-       <strong class="am-text-primary am-text-lg">已成功预约</strong> / <small>Complete</small> 
+       <strong class="am-text-primary am-text-lg">已完成预约</strong> / <small>Complete</small> 
      </div>
    </div><hr>
    
