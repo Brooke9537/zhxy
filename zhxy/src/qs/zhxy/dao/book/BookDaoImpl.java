@@ -37,7 +37,7 @@ public class BookDaoImpl implements BookDao{
 			System.out.println(bookName);
 			if(!StringUtils.isNullOrEmpty(bookName)){
 				sql.append(" where BookName like ?");
-				list.add(bookName);
+				list.add("%"+bookName+"%");
 			}
 			
 			sql.append(" order by BookId DESC limit ?,?");
