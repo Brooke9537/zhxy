@@ -30,12 +30,10 @@ public class UserDaoImpl implements UserDao{
 		int updateRows = 0;
 		if(null != connection){
 			String sql = "update zhxy_user set userName=?," +
-					"gender=?,grade=?,major=?,Sclass=?,telephone=?,position=?,area=?,worktime=?,isfree=?,times=?,roleId=? where userId=?" +
-					"values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-			Object[] params = {user.getUserId(),user.getUserName(),
-					user.getRoleId(),user.getGender(),user.getGrade(),user.getMajor(),user.getSclass(),
-					user.getTelephone(),user.getPosition(),user.getArea(),user.getWorktime(),user.getIsfree(),
-					user.getTimes(),user.getRoleId()};
+					"gender=?,grade=?,major=?,Sclass=?,telephone=?,userPassword=? where userId=?" ;
+			Object[] params = {user.getUserName(),
+					user.getGender(),user.getGrade(),user.getMajor(),user.getSclass(),
+					user.getTelephone(),user.getUserPassword(),user.getUserId()};
 			updateRows = BaseDao.execute(connection, pstm, sql, params);
 			BaseDao.closeResource(null, pstm, null);
 		}
@@ -82,11 +80,6 @@ public class UserDaoImpl implements UserDao{
 				user.setMajor(rs.getString("major"));
 				user.setSclass(rs.getString("Sclass"));
 				user.setTelephone(rs.getString("telephone"));
-				user.setPosition(rs.getString("position"));
-				user.setArea(rs.getString("area"));
-				user.setWorktime(rs.getDate("worktime"));
-				user.setIsfree(rs.getString("isfree"));
-				user.setTimes(rs.getString("times"));
 				user.setRoleId(rs.getInt("roleId"));
 				
 			}

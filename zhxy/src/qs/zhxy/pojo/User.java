@@ -81,7 +81,6 @@ public class User {
 		this.roleId = roleId;
 	}
 	
-
 	public String getUserId() {
 		return userId;
 	}

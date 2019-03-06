@@ -30,6 +30,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import qs.zhxy.controller.UserController;
 import qs.zhxy.dao.BaseDao;
+import qs.zhxy.dao.user.UserDao;
 import qs.zhxy.pojo.Role;
 import qs.zhxy.pojo.User;
 import qs.zhxy.pojo.Book;
@@ -118,7 +119,31 @@ public class UserController{
 		}
 		return "userinfo";
 	}
-	
+	@RequestMapping(value="/setinfo.do",method=RequestMethod.POST)
+	public String setUser(HttpSession session,
+			@RequestParam(value="userName",required=false) String userName,
+			@RequestParam(value="gender",required=false) String gender,
+			@RequestParam(value="grade",required=false) String grade,
+			@RequestParam(value="major",required=false) String major,
+			@RequestParam(value="Sclass",required=false) String Sclass,
+			@RequestParam(value="telephone",required=false) String telephone,
+			@RequestParam(value="userPassword",required=false) String userPassword
+			){
+		if(session.getAttribute(Constants.USER_SESSION) == null){
+			return "redirect:/user/login.html";
+		}
+		User _user = (User) session.getAttribute(Constants.USER_SESSION);
+		_user.setUserName(userName);
+		_user.setGender(gender);
+		_user.setGrade(grade);
+		_user.setMajor(major);
+		_user.setSclass(Sclass);
+		_user.setTelephone(telephone);
+		_user.setUserPassword(userPassword);
+		userService.add(_user);
+		session.setAttribute(Constants.USER_SESSION, _user);
+		return "redirect:/user/userinfo.html";
+	}
 
 	
 	
@@ -169,7 +194,6 @@ public class UserController{
 	@RequestMapping(value="/mybook.html",method=RequestMethod.GET)
 	public String bybook(Model model,
 						@RequestParam(value="BookId",required=false) String BookId,
-						//@RequestParam(value="queryUserRole",required=false) String queryRoleId,
 						@RequestParam(value="pageIndex",required=false) String pageIndex,
 						HttpSession session) {
 		if(session.getAttribute(Constants.USER_SESSION) == null){
@@ -260,7 +284,6 @@ public class UserController{
 		if(session.getAttribute(Constants.USER_SESSION) == null){
 			return "redirect:/user/login.html";
 		}
-		// TODO Auto-generated method stub
 		PreparedStatement pstm = null;
 		int updateRows = 0;
 		System.out.println(address+content);
@@ -283,7 +306,6 @@ public class UserController{
 	
 	@RequestMapping(value="/fankui.do",method=RequestMethod.POST)
 	public String dofankui(String address,String content) throws Exception {
-		// TODO Auto-generated method stub
 		PreparedStatement pstm = null;
 		int updateRows = 0;
 		System.out.println(address+content);
@@ -339,14 +361,6 @@ public class UserController{
 		return "user/useradd";
 	}
 	
-
-	
-	@RequestMapping(value="/usermodify1.html",method=RequestMethod.GET)
-	public String getUserById(@RequestParam String userId,Model model){
-		User user = userService.getUserByUserId(userId);
-		model.addAttribute(user);
-		return "usermodify1";
-	}
 	
 	@RequestMapping(value="/view/{id} ",method=RequestMethod.GET)
 	public String view(@PathVariable String userId,Model model){
@@ -356,7 +370,7 @@ public class UserController{
 	}
 
 //	
-//	@RequestMapping(value="/usermodifysave.html",method=RequestMethod.POST)
+//	@RequestMapping(value="/userysave.html",method=RequestMethod.POST)
 //	public String modifyUserSave(User user,HttpSession session){
 //		logger.debug("modifyUserSave userid===================== "+user.getUserId());
 //		user.setModifyBy(((User)session.getAttribute(Constants.USER_SESSION)).getUserId());
