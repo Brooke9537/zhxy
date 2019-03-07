@@ -15,14 +15,7 @@
 			</c:choose>
 
 			<c:forEach var="page" begin="1" end="${param.totalPageCount }">
-				<c:choose>  
-					<c:when test="${page == param.currentPageNo }"> 
-						<li class="am-active"><a href="javascript:page_nav(document.forms[0],${page });">${page }</a></li>
-					</c:when>
-					<c:otherwise> 
-						<li><a href="javascript:page_nav(document.forms[0],${page });">${page }</a></li> 
-					</c:otherwise>
-				</c:choose>
+				/common/head_s.jsp
 			</c:forEach>
     
 			<c:choose>  

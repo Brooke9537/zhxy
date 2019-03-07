@@ -50,7 +50,7 @@
             <h2>Bug 反馈</h2>
             <p>感谢对 智慧校园 的关注和支持，如遇到 Bug 或者使用问题，可以通过以下途径反馈给我们：</p>
             <ol>
-              <li>在 GitHub 项目主页提交 <a href="https://github.com/Brooke9537/zhxy/issues" target="_blank">Issue</a>。</li>
+              <li>在 GitHub 项目主页提交 <a href="#" target="_blank">Issue</a>。</li>
             </ol>
             <p>反馈注意事项</p>
             <p>为了能最准确的传达所描述的问题， 建议你在反馈时附上演示，方便我们理解。</p>

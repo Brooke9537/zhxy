@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="/WEB-INF/jsp/common/head_s.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:choose>  
+<c:when test="${userSession.roleId == '1' }"> 
+	<c:import url="common/head_s.jsp"></c:import>
+</c:when>
+<c:otherwise> 
+	<c:import url="common/head_t.jsp"></c:import>
+</c:otherwise>
+</c:choose>
+
 <div class="admin-content-body">
       <div class="am-cf am-padding am-padding-bottom-0">
         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">个人资料</strong> / <small>Personal information</small></div>

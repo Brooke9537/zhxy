@@ -1,13 +1,14 @@
 package qs.zhxy.pojo;
 
 public class dating {
-
+	private int dateid;
 	private String stuId;
 	private String stuName;
 	private String telephone;
 	private String date;
 	private String time;
 	private String statue;
+	
 	
 	public dating() {}
 	
@@ -55,6 +56,14 @@ public class dating {
 	}
 	public void setTime(String time) {
 		this.time = time;
+	}
+
+	public int getDateid() {
+		return dateid;
+	}
+
+	public void setDateid(int dateid) {
+		this.dateid = dateid;
 	}
 
 

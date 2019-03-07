@@ -248,7 +248,6 @@ public class UserController{
 		PreparedStatement pstm = null;
 		User user=(User) session.getAttribute(Constants.USER_SESSION);
 		String userid = user.getUserId();
-		System.out.println(userid);
 		ResultSet rs = null;
 		Connection connection = BaseDao.getConnection();
 		String sql = "select * from zhxy_dating where stuId=? ";
@@ -286,7 +285,6 @@ public class UserController{
 		}
 		PreparedStatement pstm = null;
 		int updateRows = 0;
-		System.out.println(address+content);
 		Connection connection = BaseDao.getConnection();
 		String sql = "insert into zhxy_bx(address,content) values(?,?)";
 		Object[] params = {address,content};
@@ -308,7 +306,6 @@ public class UserController{
 	public String dofankui(String address,String content) throws Exception {
 		PreparedStatement pstm = null;
 		int updateRows = 0;
-		System.out.println(address+content);
 		Connection connection = BaseDao.getConnection();
 		String sql = "insert into zhxy_bx(address,content) values(?,?)";
 		Object[] params = {address,content};
@@ -324,6 +321,57 @@ public class UserController{
 //		User user = userService.getUserByUserId(userId);
 //		model.addAttribute(user);
 	}
+	
+	@RequestMapping(value="/datelist.html")
+	public String datelist(Map<String, Object> map,HttpSession session) throws Exception{
+		if(session.getAttribute(Constants.USER_SESSION) == null){
+			return "redirect:/user/login.html";
+		}
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		Connection connection = BaseDao.getConnection();
+		String sql = "select * from zhxy_dating";
+		Object[] params = { };
+		rs = BaseDao.execute(connection, pstm, rs, sql, params);
+		List<dating> datingList =  new ArrayList<dating>();
+		while(rs.next()){
+			dating _dating = new dating();
+			_dating.setDateid(rs.getInt("dateid"));
+			_dating.setStuId(rs.getString("stuId"));
+			_dating.setStuName(rs.getString("stuName"));
+			_dating.setTelephone(rs.getString("telephone"));
+			_dating.setDate(rs.getString("date"));
+			_dating.setTime(rs.getString("time"));
+			_dating.setStatue(rs.getString("statue"));
+			datingList.add(_dating);
+		}
+		map.put("datingList", datingList);
+		return "datelist";
+	}
+	
+	@RequestMapping(value="/date.up",method=RequestMethod.POST)
+	public String update(@RequestParam(value="statue",required=false) String statue,	
+						@RequestParam(value="dateid",required=false) String dateid,	
+						HttpSession session) throws Exception {
+		if(session.getAttribute(Constants.USER_SESSION) == null){
+			return "redirect:/user/login.html";
+		}
+		PreparedStatement pstm = null;
+		int updateRows = 0;
+		Connection connection = BaseDao.getConnection();
+		String sql = "update zhxy_dating set statue=? where dateid=?";
+		Object[] params = { statue,dateid };
+		updateRows = BaseDao.execute(connection, pstm, sql, params);
+		if(updateRows != 0) {
+			BaseDao.closeResource(null, pstm, null);
+			return "redirect:/user/datelist.html";
+		}else {
+			BaseDao.closeResource(null, pstm, null);
+			return "syserror";
+		}
+	}
+	
+	
 	
 	
 	@RequestMapping(value="/syserror.html")

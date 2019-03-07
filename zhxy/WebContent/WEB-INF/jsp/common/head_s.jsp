@@ -79,7 +79,6 @@
           </li>
           
         <li><a href="${pageContext.request.contextPath }/user/baoxiu.html"><span class="am-icon-table"></span> 报修</a></li>
-        <li><a href="https://github.com/Brooke9537/zhxy/issues" target="_blank"><span class="am-icon-pencil-square-o"></span> BUG反馈</a></li>
         <li><a href="${pageContext.request.contextPath }/user/logout.html"><span class="am-icon-sign-out"></span> 退出登录</a></li>
       </ul>
 

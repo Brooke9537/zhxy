@@ -119,7 +119,7 @@
             友情链接 <span class="am-icon-caret-down"></span>
           </a>
           <ul class="am-dropdown-content">
-            <li><a href="https://github.com/Brooke9537/zhxy">GitHub</a></li>
+            <li><a href="#">GitHub</a></li>
             <li><a href="#">Gitee</a></li>
             <li><a href="#">Bolg</a></li>
           </ul>

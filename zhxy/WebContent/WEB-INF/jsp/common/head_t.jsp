@@ -46,9 +46,8 @@
           <span class="am-icon-users"></span>  ${userSession.userName } , 欢迎你！ <span class="am-icon-caret-down"></span>
         </a>
         <ul class="am-dropdown-content">
-          <li><a href="tinfo.html"><span class="am-icon-user"></span> 个人信息</a></li>
-          <li><a href="setting.html"><span class="am-icon-cog"></span> 系统设置</a></li>
-          <li><a href="#"><span class="am-icon-power-off"></span> 退出登录</a></li>
+          <li><a href="${pageContext.request.contextPath}/user/userinfo.html"><span class="am-icon-user"></span> 个人信息</a></li>
+          <li><a href="${pageContext.request.contextPath}/user/logout.html"><span class="am-icon-power-off"></span> 退出登录</a></li>
         </ul>
       </li>
     </ul>
@@ -61,27 +60,17 @@
     <div class="am-offcanvas-bar admin-offcanvas-bar">
       <ul class="am-list admin-sidebar-list">
         <li><a href="/zhxy/user/admin.html"><span class="am-icon-home"></span> 首页 </a></li>
-        <li><a href="${pageContext.request.contextPath}/user/useradd.html"><span class="am-icon-home"></span> 个人信息 </a></li>
+        <li><a href="${pageContext.request.contextPath}/user/userinfo.html"><span class="am-icon-home"></span> 个人信息 </a></li>
 
         <li class="admin-parent">
-            <a class="am-cf" data-am-collapse="{parent: '#accordion', target: '#collapse-nav2'}"><span class="am-icon-file"></span> 心理咨询预约 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+            <a class="am-cf" data-am-collapse="{parent: '#accordion', target: '#collapse-nav2'}"><span class="am-icon-file"></span> 心理咨询 </a>
             <ul class="am-panel-collapse am-collapse am-list admin-sidebar-sub am-in" id="collapse-nav2">
-              <li><a href="${pageContext.request.contextPath }/user/userlist.html" class="am-cf"><span class="am-icon-th"></span>  待确定预约<span class="am-badge am-badge-danger am-margin-right am-fr">1</span></a></li>
-              <li><a href="${pageContext.request.contextPath }/user/userlist.html"><span class="am-icon-puzzle-piece"></span>  未完成预约<span class="am-badge am-badge-warning am-margin-right am-fr">2</span></a></li>
-              <li><a href="${pageContext.request.contextPath }/user/booklist.html"><span class="am-icon-check"></span>  已完成预约<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
+              <li><a href="${pageContext.request.contextPath }/user/datelist.html" class="am-cf"><span class="am-icon-th"></span>  学生预约</a></li>
             </ul>
           </li>
-        <li><a href="${pageContext.request.contextPath }/user/userlist.html"><span class="am-icon-table"></span> 预约计划</a></li>
-        <li><a href="/zhxy/welcome#about"><span class="am-icon-pencil-square-o"></span> BUG反馈</a></li>
+        <li><a href="${pageContext.request.contextPath }/user/userlist.html"><span class="am-icon-table"></span> 查看报修&反馈</a></li>
         <li><a href="${pageContext.request.contextPath }/user/logout.html"><span class="am-icon-sign-out"></span> 退出登录</a></li>
       </ul>
-
-      <div class="am-panel am-panel-default admin-sidebar-panel">
-        <div class="am-panel-bd">
-          <p><span class="am-icon-bookmark"></span> 公告</p>
-          <p>${gg }</p>
-        </div>
-      </div>
 
     </div>
   </div>
