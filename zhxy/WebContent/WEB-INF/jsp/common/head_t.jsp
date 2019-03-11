@@ -68,7 +68,16 @@
               <li><a href="${pageContext.request.contextPath }/user/datelist.html" class="am-cf"><span class="am-icon-th"></span>  学生预约</a></li>
             </ul>
           </li>
-        <li><a href="${pageContext.request.contextPath }/user/userlist.html"><span class="am-icon-table"></span> 查看报修&反馈</a></li>
+          
+          <li class="admin-parent">
+            <a class="am-cf" data-am-collapse="{parent: '#accordion', target: '#collapse-nav3'}"><span class="am-icon-file"></span> 书籍借阅 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+            <ul class="am-panel-collapse am-collapse am-list admin-sidebar-sub am-in" id="collapse-nav3">
+              <li><a href="${pageContext.request.contextPath }/user/booklist.html" class="am-cf"><span class="am-icon-th"></span>  查询书籍</a></li>
+              <li><a href="${pageContext.request.contextPath }/user/mybook.html"><span class="am-icon-th"></span>  我的书架</a></li>
+            </ul>
+          </li>
+          
+        <li><a href="${pageContext.request.contextPath }/user/baoxiu.html"><span class="am-icon-table"></span> 报修</a></li>
         <li><a href="${pageContext.request.contextPath }/user/logout.html"><span class="am-icon-sign-out"></span> 退出登录</a></li>
       </ul>
 
